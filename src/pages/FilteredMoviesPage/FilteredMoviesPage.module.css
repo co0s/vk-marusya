@@ -1,0 +1,178 @@
+/* Контейнер страницы */
+.page__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* Заголовок */
+.titleRow {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.backButton {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #23243a 60%, #2d2e4a 100%);
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.backButton:hover {
+    transform: translateY(-2px) scale(1.05);
+    opacity: 0.9;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+    text-align: center;
+    background: linear-gradient(135deg, #76A9FA 0%, #A855F7 50%, #EC4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    letter-spacing: -0.02em;
+    font-family: 'Play', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .titleRow {
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .backButton {
+        width: 40px;
+        height: 40px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .page__container {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Сетка фильмов */
+.movies__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .movies__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .movies__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    .movies__grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+/* Загрузочные состояния */
+.loading__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    width: 100%;
+}
+
+.loading__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.loading__spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(118, 169, 250, 0.2);
+    border-top: 4px solid #76A9FA;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading__text {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Play', sans-serif;
+    text-align: center;
+}
+
+/* Кнопка "Загрузить еще" */
+.loadMore__container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+.loadMore__button {
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    font-family: 'Play', sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #76A9FA 0%, #A855F7 50%, #EC4899 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(118, 169, 250, 0.3);
+}
+
+.loadMore__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(118, 169, 250, 0.4);
+}
+
+.loadMore__button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .loadMore__button {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .loadMore__container {
+        margin-top: 2rem;
+        padding: 1.5rem 0;
+    }
+}

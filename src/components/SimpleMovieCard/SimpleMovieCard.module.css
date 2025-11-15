@@ -1,0 +1,97 @@
+.card__item {
+  padding: 12px; /* p-3 */
+
+  border-radius: 8px; /* rounded-lg */
+position: relative;
+
+  max-width: 400px; /* Ограничиваем максимальную ширину карточки (например) */
+  min-height: 250px;
+  list-style: none;
+
+}
+
+.card__item:hover {
+  opacity: 0.9; /* hover:bg-opacity-90 */
+}
+
+/* 2. Заголовок: <h3> (text-lg font-semibold text-white) */
+.title {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600; /* font-semibold */
+  color: white; /* text-white */
+}
+
+/* 3. Оригинальное название: <p> (text-sm text-gray-400) */
+.originalTitle {
+  font-size: 0.875rem; /* text-sm */
+  color: #9ca3af; /* text-gray-400 */
+}
+
+/* 4. Дополнительный текст: <p> (text-sm text-gray-500 mt-1) */
+.metaText {
+  font-size: 0.875rem; /* text-sm */
+  color: #6b7280; /* text-gray-500 */
+  margin-top: 4px; /* mt-1 */
+}
+
+
+/* 6. Контейнер постера */
+.poster__container {
+    /* Чтобы изображение занимало всю ширину LI */
+    width: 100%; 
+    
+    /* Используем padding-bottom для создания соотношения сторон 2:3 */
+    padding-bottom: 150%; /* 100% (ширина) * (3/2) = 150%. Это контейнер! */
+    height: 0; 
+    
+    position: relative; /* Обязательно для позиционирования img */
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* 7. Само изображение */
+.poster__img {
+    /* Растягиваем изображение на весь контейнер (который имеет соотношение 2:3) */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Обязательно для сохранения пропорций и заполнения контейнера */
+    object-fit: cover; 
+    
+    transition: transform 0.3s;
+}
+
+/* 8. Стиль для номера (ранга) */
+.rankBadge {
+   /* Позиционирование: Выносим за пределы карточки (top: -12px; left: -12px) */
+  position: absolute;
+  top: -12px; 
+  left: -12px; 
+  
+  /* Фон и форма */
+  background-color: white; /* background/white */
+  border-radius: 50px; /* border-radius: 50px; - для pill-формы */
+  opacity: 1; /* opacity: 1; */
+  
+  /* Отступы: Они определяют размер плашки */
+  padding: 8px 24px; /* padding-top: 8px; padding-right: 24px; и т.д. */
+  
+  /* Текст (Сам номер) */
+  color: #6A5DC2; /* background/brand active #6A5DC2 */
+  font-weight: 700; /* font-weight: 700 (Bold) */
+  font-size: 24px; /* font-size: 24px */
+  line-height: 32px; /* line-height: 32px */
+  
+  /* Дополнительно: Высокий Z-index, чтобы быть над всеми элементами */
+  z-index: 200; 
+  
+  /* Дополнительно: добавляем тень, чтобы номер "плавал" над карточкой */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+} 
+
+.rankBadge::before {
+  display: none;
+}

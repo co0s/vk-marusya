@@ -1,0 +1,414 @@
+
+
+/* --- Файл: src/components/RandomMovieHero.module.css --- */
+
+/* 1. Главный контейнер (фон + растягивание) */
+.hero__container {
+  /* Растягивается на всю ширину, как на макете */
+  position: relative;
+  padding: 20px 0; /* Убрал боковые отступы */
+  border-radius: 12px;
+  overflow: hidden;
+  height: 400px; /* Фиксированная высота баннера как на скрине 2 */
+  background: transparent;
+}
+
+/* 2. Градиент и размытие */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Темный оверлей */
+  backdrop-filter: blur(5px); /* Легкое размытие (эффект Hero-блока) */
+  z-index: 1;
+}
+
+/* 3. Внутренний контейнер контента (ограничение и прижатие влево) */
+.content__wrapper {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
+  
+  /* Контейнер для ограничения ширины контента (как max-w-6xl mx-auto) */
+  max-width: 1400px; 
+  margin: 0 auto;
+  padding: 0px; /* Отступы по краям экрана */
+}
+
+@media (min-width: 768px) {
+  .content__wrapper {
+    flex-direction: row;
+    align-items: center;
+    padding: 0 40px;
+  }
+}
+
+/* 4. Блок с текстом (левая колонка) */
+.info__block {
+  width: 100%;
+  padding-right: 0;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+  .info__block {
+    width: 60%; /* md:w-3/5 */
+    padding-right: 40px;
+    margin-bottom: 0;
+  }
+}
+
+/* 5. Мета-информация (Рейтинг, год, жанры) */
+.meta__info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 0.875rem;
+  color: #a0aec0; /* text-gray-300 */
+}
+
+.rating__badge {
+  background-color: #76a9fa; /* синий */
+  color: black;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+/* 6. Заголовок и описание */
+.title {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 800; /* font-extrabold */
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 3rem; /* lg:text-5xl */
+  }
+}
+
+.plot {
+  color: #e2e8f0; /* text-gray-200 */
+  margin-bottom: 32px;
+  /* line-clamp-3 (имитация) */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+/* 7. Кнопки (контейнер) */
+.buttons__container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Группа для иконочных кнопок */
+.icon__buttons__group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 8. Кнопка "О фильме" - полупрозрачная */
+.btn__primary {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.btn__primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn__primary:hover::before {
+  left: 100%;
+}
+
+.btn__primary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn__primary:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* 9. Кнопка "Трейлер" - теперь синяя */
+.btn__secondary {
+  background: linear-gradient(135deg, #76a9fa 0%, #5d8df7 100%);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 4px 15px rgba(118, 169, 250, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  border: none;
+  box-sizing: border-box;
+}
+
+.btn__secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn__secondary:hover::before {
+  left: 100%;
+}
+
+.btn__secondary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 12px 30px rgba(118, 169, 250, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.btn__secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn__secondary:disabled:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: none;
+  box-shadow: none;
+}
+
+
+
+/* 11. Блок постера (правая колонка) */
+.poster__block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .poster__block {
+    width: 40%; /* md:w-2/5 */
+    justify-content: flex-end;
+  }
+}
+
+/* 12. Стиль самого изображения */
+.poster__img {
+  width: 100%;
+  max-width: 200px; /* max-w-[200px] */
+  height: 300px; /* Фиксированная высота как на скрине 2 */
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 768px) {
+  .poster__img {
+    max-width: 280px; /* Уменьшили размер постера */
+    height: 360px;
+  }
+}
+
+/* Адаптивность для разных экранов */
+@media (max-width: 1400px) {
+  .content__wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .info__block {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 32px;
+    order: 2;
+  }
+
+  .poster__block {
+    width: 100%;
+    justify-content: center;
+    order: 1;
+    margin-bottom: 24px;
+  }
+
+  .hero__container {
+    height: auto;
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__container {
+    height: auto;
+    padding: 30px 0;
+  }
+
+  .content__wrapper {
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 1.875rem; /* 30px */
+  }
+
+  .buttons__container {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .btn__primary,
+  .btn__secondary {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  .icon__buttons__group {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .poster__img {
+    max-width: 200px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 576px) {
+  .meta__info {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 1.5rem; /* 24px */
+  }
+
+  .plot {
+    font-size: 0.875rem;
+  }
+
+  .hero__container {
+    padding: 20px 0;
+  }
+
+  .content__wrapper {
+    padding: 0 16px;
+  }
+
+  .buttons__container {
+    gap: 8px;
+    width: 100%;
+  }
+
+  .btn__primary,
+  .btn__secondary {
+    padding: 10px 16px;
+    font-size: 0.875rem;
+    width: 100%;
+    max-width: none;
+  }
+
+  .icon__buttons__group {
+    gap: 8px;
+    justify-content: center;
+    width: auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .title {
+    font-size: 1.25rem; /* 20px */
+  }
+
+  .content__wrapper {
+    padding: 0 12px;
+  }
+
+  .poster__img {
+    max-width: 160px;
+    height: 240px;
+  }
+}
+
+.loading__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(5, 8, 20, 0.78);
+  backdrop-filter: blur(4px);
+  z-index: 30;
+}
+
+.loading__spinner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 4px solid rgba(118, 169, 250, 0.25);
+  border-top: 4px solid #76a9fa;
+  animation: hero-spin 1s linear infinite;
+}
+
+.loading__label {
+  color: #f8fafc;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+@keyframes hero-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

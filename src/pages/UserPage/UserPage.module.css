@@ -1,0 +1,548 @@
+/* Основной контейнер страницы */
+.user__page {
+  min-height: 100vh;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Заголовок страницы */
+.page__header {
+  margin-bottom: 40px;
+}
+
+.page__title {
+  font-size: 48px;
+  font-weight: 800;
+  color: white;
+  margin: 0;
+  font-family: 'Play', sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #76A9FA 0%, #A855F7 50%, #EC4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  letter-spacing: -0.02em;
+}
+
+/* Контейнер с вкладками */
+.tabs__container {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+/* Заголовки вкладок */
+.tabs__header {
+  display: flex;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 40px;
+  gap: 0;
+}
+
+.tab__button {
+  background: none;
+  border: none;
+  padding: 16px 0;
+  margin-right: 40px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 3px solid transparent;
+  position: relative;
+  font-family: 'Play', sans-serif;
+}
+
+.tab__button:focus,
+.tab__button:focus-visible,
+.tab__button:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.tab__button:hover {
+  color: white;
+}
+
+.tab__active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(135deg, #A393F5, #76A9FA);
+  border-radius: 2px;
+}
+
+.tab__active {
+  color: white;
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.tab__count {
+  background: linear-gradient(135deg, #A393F5, #76A9FA);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Содержимое вкладок */
+.tab__content {
+  padding: 0;
+}
+
+/* Вкладка "Избранные фильмы" */
+.favorites__content {
+  min-height: 400px;
+}
+
+.empty__state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #a0aec0;
+}
+
+.empty__state h3 {
+  font-size: 24px;
+  color: white;
+  margin: 0 0 16px 0;
+}
+
+.empty__state p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.movies__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.movie__card {
+  background: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.movie__card:hover {
+  transform: translateY(-8px);
+}
+
+.poster__container {
+  position: relative;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.poster__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+}
+
+.movie__card:hover .poster__img {
+  transform: scale(1.05);
+}
+
+.favorite__button__overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.movie__info {
+  padding: 0;
+  margin-top: 12px;
+}
+
+.movie__title {
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  margin: 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-family: 'Play', sans-serif;
+}
+
+.movie__year {
+  display: none;
+}
+
+.rating {
+  display: none;
+}
+
+.rating__badge {
+  display: none;
+}
+
+/* Вкладка "Настройки аккаунта" */
+.settings__content {
+  max-width: none;
+  margin: 0;
+}
+
+.profile__section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.avatar__section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.avatar__large {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #76A9FA 0%, #A393F5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  flex-shrink: 0;
+}
+
+.user__details {
+  flex: 1;
+}
+
+.user__name {
+  font-size: 24px;
+  font-weight: 400;
+  color: white;
+  margin: 0 0 4px 0;
+  font-family: 'Play', sans-serif;
+}
+
+.user__email {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  font-family: 'Play', sans-serif;
+}
+
+.info__section {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+.section__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 20px 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.info__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info__item {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  border-left: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.info__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.info__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info__label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  font-family: 'Play', sans-serif;
+  margin: 0;
+}
+
+.info__value {
+  font-size: 16px;
+  color: white;
+  font-weight: 400;
+  font-family: 'Play', sans-serif;
+}
+
+.password__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.change__password__btn {
+  background: none;
+  border: none;
+  color: #76A9FA;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Play', sans-serif;
+  cursor: pointer;
+  padding: 0;
+  text-align: right;
+  transition: color 0.3s ease;
+  margin-left: auto;
+}
+
+.change__password__btn:hover {
+  color: #A393F5;
+}
+
+.password__edit__container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.password__input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: white;
+  font-size: 14px;
+  font-family: 'Play', sans-serif;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.password__input:focus {
+  border-color: #76A9FA;
+}
+
+.password__input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.password__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.save__password__btn {
+  background: linear-gradient(135deg, #76A9FA 0%, #A393F5 100%);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'Play', sans-serif;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.save__password__btn:hover {
+  opacity: 0.9;
+}
+
+.save__password__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cancel__password__btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'Play', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancel__password__btn:hover {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+.actions__section {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  text-align: left;
+}
+
+.logout__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #76A9FA 0%, #A393F5 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Play', sans-serif;
+  margin-top: 24px;
+}
+
+.logout__button:hover {
+  opacity: 0.9;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .user__page {
+    padding: 20px 10px;
+  }
+  
+  .page__title {
+    font-size: 40px;
+  }
+  
+  .tabs__header {
+    flex-direction: column;
+  }
+  
+  .tab__button {
+    width: 100%;
+    border-bottom: 3px solid transparent;
+    border-right: none;
+    justify-content: flex-start;
+  }
+  
+  .tab__active {
+    border-bottom-color: #4299e1;
+  }
+  
+  .tab__content {
+    padding: 20px;
+  }
+  
+  .movies__grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+  }
+  
+  .avatar__section {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  
+  .avatar__large {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+  
+  .user__name {
+    font-size: 20px;
+  }
+  
+  .info__grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .settings__content {
+    max-width: none;
+  }
+}
+
+/* Загрузочные состояния */
+.loading__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  width: 100%;
+}
+
+.loading__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.loading__spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(118, 169, 250, 0.2);
+  border-top: 4px solid #76A9FA;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading__text {
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Play', sans-serif;
+  text-align: center;
+}

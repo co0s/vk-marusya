@@ -1,0 +1,41 @@
+/* Базовые стили для бейджа рейтинга */
+.rating__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  font-family: 'Play', sans-serif;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.rating__icon {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* Цветовые схемы для разных рейтингов */
+.rating__excellent {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.rating__good {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.rating__average {
+  background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%);
+  border: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+.rating__poor {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
