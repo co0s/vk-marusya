@@ -1,0 +1,51 @@
+/* Стили для кнопки обновления */
+.icon__button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon__button:hover {
+  transform: translateY(-2px) scale(1.1);
+}
+
+.icon__button:disabled {
+  cursor: not-allowed;
+  transform: none;
+}
+
+.icon__button:disabled:hover {
+  transform: none;
+}
+
+.refresh__icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  background: #333333;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon__button:hover .refresh__icon {
+  opacity: 1;
+  transform: rotate(180deg);
+}
+
+.icon__button:disabled .refresh__icon {
+  opacity: 0.5;
+  transform: none;
+}
+
+.icon__button:disabled:hover .refresh__icon {
+  transform: none;
+}

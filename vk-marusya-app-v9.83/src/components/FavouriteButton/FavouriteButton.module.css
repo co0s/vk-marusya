@@ -1,0 +1,80 @@
+/* Стили для кнопки избранного */
+.icon__button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon__button:hover {
+  transform: translateY(-2px) scale(1.1);
+}
+
+.favorite__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #333333;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+}
+
+.heartIcon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.heartIcon::before,
+.heartIcon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.heartIcon::before {
+  opacity: 0.85;
+  transform: scale(1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23A3ADC2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21z'/%3E%3C/svg%3E");
+}
+
+.icon__button:hover .heartIcon::before {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.heartIcon::after {
+  opacity: 0;
+  transform: scale(0.95);
+  background: transparent;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") no-repeat center / contain;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.favorite__active .heartIcon::before {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.favorite__active .heartIcon::after {
+  opacity: 1;
+  transform: scale(1);
+  background: linear-gradient(135deg, #ff6fb1, #ff85c2);
+}
+
+.icon__button:hover .heartIcon::after {
+  transform: scale(1.08);
+}

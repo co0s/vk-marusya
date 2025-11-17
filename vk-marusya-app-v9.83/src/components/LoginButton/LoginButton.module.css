@@ -1,0 +1,156 @@
+.auth__container {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  text-decoration: none;
+  color: white;
+  padding: 10px 0;
+  margin: 0 20px;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: 'Play', sans-serif;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  color: #A393F5;
+}
+
+
+
+.user__container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.user__profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: white !important;
+  padding: 10px 0;
+  margin: 0 20px;
+  font-family: 'Play', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  background: transparent;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.user__profile::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #A393F5, #76A9FA);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.user__profile:hover {
+  color: #A393F5 !important;
+}
+
+.user__profile.active {
+  color: white !important;
+}
+
+.user__profile.active::after {
+  width: 100%;
+}
+
+.user__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #76A9FA 0%, #A393F5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.user__name {
+  font-size: 24px;
+  font-weight: 400;
+  font-family: 'Play', sans-serif;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logout__button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout__button:hover {
+  color: #fc8181;
+  background-color: rgba(252, 129, 129, 0.1);
+}
+
+@media (max-width: 1400px) {
+  .button {
+    display: none;
+  }
+  
+  .user__profile {
+    padding: 8px 12px;
+    margin: 0;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+  
+  .user__profile::after {
+    display: none;
+  }
+  
+  .user__avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
+  .user__name {
+    font-size: 16px;
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .user__name {
+    display: none;
+  }
+  
+  .user__avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+    margin-right: 0;
+  }
+}
