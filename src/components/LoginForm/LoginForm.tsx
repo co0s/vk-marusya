@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
-import { loginUser, clearError, selectUserStatus, selectUserError } from '../../store/slices/userSlice';
+import { loginUser, clearError, selectUserStatus, selectUserError, fetchFavorites } from '../../store/slices/userSlice';
 import type { LoginData } from '../../types/user';
+import { logger } from '../../utils/logger';
 import styles from './LoginForm.module.css';
 
 interface LoginFormProps {
@@ -96,11 +97,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, onSwitchToRegister }) =>
     try {
       const result = await dispatch(loginUser(formData));
       if (loginUser.fulfilled.match(result)) {
+        // Загружаем избранное после успешной авторизации
+        dispatch(fetchFavorites());
         onClose();
         navigate('/profile');
       }
     } catch (error: unknown) {
-      console.error('Ошибка при авторизации:', error);
+      // Показываем ошибку пользователю
+      logger.error('Ошибка при авторизации:', error);
     }
   };
 

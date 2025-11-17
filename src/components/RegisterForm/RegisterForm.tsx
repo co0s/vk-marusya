@@ -155,7 +155,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
       // Показываем ошибку пользователю
       logger.error("Ошибка при регистрации:", error);
     }
-    }
   };
 
   return (
